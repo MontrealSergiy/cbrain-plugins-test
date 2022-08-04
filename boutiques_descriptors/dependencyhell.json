@@ -32,8 +32,7 @@
             "type":              "File",
             "optional":          true,
             "list":              false,
-            "value-key":         "[SINPUT2]",
-            "disables-inputs":    ["sinput2"]
+            "value-key":         "[SINPUT2]"
         },
         {
             "name":              "Optional multi input 2",
@@ -118,8 +117,8 @@
             ]
         },
         {
-            "id": "files",
-            "name": "Files",
+            "id": "optfiles",
+            "name": "Optional Files",
             "members": [
                 "sinput2",
                 "minput2"
