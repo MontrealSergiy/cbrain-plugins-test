@@ -45,10 +45,11 @@
         },
         {
             "name":              "Name of report",
-            "id":                "my_output_name",
+            "id":                "my_output_file",
             "description":       "The name of the text report containing the output of the 'du' command",
             "type":              "String",
-            "optional":          false,
+            "optional":          true,
+            "default-value":     "dureport",
             "list":              false,
             "value-key":         "[DU_OUTPUT_NAME]"
         },
@@ -88,8 +89,8 @@
             "optional":          true,
             "value-choices":     ["x", "y"],
             "value-requires":
-                {"x":  ["du_report_out" ]},
-            "value-disables":                {"x":  ["du_report_out", "option_a" ]},
+                {"x":  ["my_output_file" ], "y": []},
+            "value-disables":                {"x":  ["option_a" ], "y": []},
             "requires-inputs": ["option_upper_h"],
             "disables-inputs": ["option_h", "minput2"],
             "command-line-flag": "-H",
@@ -161,7 +162,7 @@
 
             },
             "BoutiquesInputValueFixer": {
-                "my_output_name": "Du_Report.txt",
+                "my_output_file": "Du_Report.txt",
                 "option_h": true,
                 "sinput2": 27
             }
