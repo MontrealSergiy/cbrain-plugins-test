@@ -213,6 +213,6 @@
     },
     "custom": {
         "cbrain:readonly-input-files": true,
-        "cbrain:copy-input-files": true
+        "cbrain:full-copy-input-files": true
     }
 }
