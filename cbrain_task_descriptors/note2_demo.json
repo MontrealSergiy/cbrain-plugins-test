@@ -1,9 +1,9 @@
 {
-    "name":           "AddNoteDemo2",
+    "name":           "FakeArtifact1",
     "tool-version":   "5.1.2",
     "schema-version": "0.5",
     "author":         "Serge",
-    "description":    "A demo CBRAIN task using a Boutiques descriptor that copies input data rather than creats symlink. This program runs the UNIX 'du' command on a file or directory.",
+    "description":    "A random JSON document for testing ZENODO API. This program runs the UNIX 'du' command on a file or directory.",
     "descriptor-url": "https://github.com/MontrealSergiy/cbrain-plugins-test/blob/master/boutiques_descriptors/boutiques_demo.json",
     "command-line": "du [ALL] [HUMAN] [FOLLOW_LINKS] [CBRAIN_INPUT] | tee [DU_OUTPUT_NAME]",
     "container-image": {
