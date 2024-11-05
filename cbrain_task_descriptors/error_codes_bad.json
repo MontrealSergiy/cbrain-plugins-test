@@ -1,0 +1,101 @@
+{
+    "name":           "TestErrorCodesMultiLine",
+    "tool-version":   "5.1.2",
+    "schema-version": "0.5",
+    "author":         "Serge",
+    "description":    "A random JSON document for testing ZENODO API. This program runs the UNIX 'du' command on a file or directory.",
+    "descriptor-url": "https://github.com/MontrealSergiy/cbrain-plugins-test/blob/master/boutiques_descriptors/boutiques_demo.json",
+    "command-line":   "ls [HUMAN] [CBRAIN_INPUT] > [OUTPUT_NAME]; python3 -c 'exit([ERROR_CODE])'",
+    "container-image": {
+        "image": "alpine",
+        "index": "docker://",
+        "type": "singularity"
+    },
+    "inputs": [
+        {
+            "name":              "Input file or directory",
+            "id":                "my_input",
+            "description":       "Any file or directory in CBRAIN",
+            "type":              "File",
+            "optional":          false,
+            "list":              false,
+            "value-key":         "[CBRAIN_INPUT]"
+        },
+        {
+            "name":              "Name of output",
+            "id":                "my_output_name",
+            "description":       "The name of the text  containing the output",
+            "type":              "String",
+            "optional":          false,
+            "list":              false,
+            "value-key":         "[OUTPUT_NAME]"
+        },
+        {
+            "name":              "Exit code",
+            "id":                "exit",
+            "description":       "Provide an exit code",
+            "type":              "String",
+            "optional":          true,
+            "value-key":         "[ERROR_CODE]"
+
+        },
+        {
+            "name":              "Human readable values",
+            "id":                "option_h",
+            "description":       "If true, units will be shown in readable human values, otherwise in blocks",
+            "type":              "Flag",
+            "optional":          true,
+            "command-line-flag": "-h",
+            "value-key":         "[HUMAN]"
+        }
+    ],
+    "output-files": [
+        {
+            "name":          "Output report",
+            "id":            "du_report_out",
+            "description":   "The output ",
+            "optional":      false,
+            "list":          false,
+            "path-template": "[OUTPUT_NAME]"
+        }
+    ],
+    "tags": {
+        "domain": [
+            "boutiques",
+            "testing",
+            "cbrain",
+            "platform",
+            "internal"
+        ]
+    },
+    "suggested-resources": {
+        "cpu-cores":         1,
+        "ram":               1,
+        "walltime-estimate": 60
+    },
+    "custom": {
+        "cbrain:readonly-input-files": true,
+        "cbrain:input_notes": [
+            "this is the only note"
+        ]
+    },
+    "error-codes": [
+        {
+            "description": "Crashed",
+            "code": 1
+        },
+        {
+            "description": "Custom \n error';puts 'hi",
+            "code": 201
+        },
+        {
+            "description": "Success!",
+            "code": 0
+        },
+        {
+            "description": "Big error",
+            "code": -10000000000
+        }
+    ]
+
+}
