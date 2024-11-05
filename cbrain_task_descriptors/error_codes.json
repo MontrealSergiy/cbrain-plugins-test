@@ -1,11 +1,11 @@
 {
-    "name":           "FakeArtifact1",
+    "name":           "TestErrorCodes",
     "tool-version":   "5.1.2",
     "schema-version": "0.5",
     "author":         "Serge",
     "description":    "A random JSON document for testing ZENODO API. This program runs the UNIX 'du' command on a file or directory.",
     "descriptor-url": "https://github.com/MontrealSergiy/cbrain-plugins-test/blob/master/boutiques_descriptors/boutiques_demo.json",
-    "command-line": "ls [CBRAIN_INPUT] || exit 1 > [OUTPUT_NAME]",
+    "command-line":   "ls [HUMAN] [CBRAIN_INPUT] > [OUTPUT_NAME]; python3 -c 'exit([ERROR_CODE])'",
     "container-image": {
         "image": "alpine",
         "index": "docker://",
@@ -34,8 +34,9 @@
             "name":              "Exit code",
             "id":                "exit",
             "description":       "Provide an exit code",
-            "type":              "Number",
-            "optional":          true
+            "type":              "String",
+            "optional":          true,
+            "value-key":         "[ERROR_CODE]"
 
         },
         {
@@ -52,7 +53,7 @@
         {
             "name":          "Output report",
             "id":            "du_report_out",
-            "description":   "The output of the 'du' command",
+            "description":   "The output ",
             "optional":      false,
             "list":          false,
             "path-template": "[OUTPUT_NAME]"
@@ -96,5 +97,24 @@
         "cbrain:input_notes": [
             "this is the only note"
         ]
-    }
+    },
+    "error-codes": [
+        {
+            "description": "Crashed",
+            "code": 1
+        },
+        {
+            "description": "Custom error",
+            "code": 201
+        },
+        {
+            "description": "Success!",
+            "code": 0
+        },
+        {
+            "description": "Big error",
+            "code": -10000000000
+        }
+    ]
+
 }
